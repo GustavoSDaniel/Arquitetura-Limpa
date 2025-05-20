@@ -28,11 +28,11 @@ public class TransicaoPin {
         this.atuaalizandoAt = atuaalizandoAt;
     }
 
-    public TransicaoPin(String pin, Integer quantidadeDeTentativa, Usuario usuario,Boolean bloqueado ) {  // VALORES QUE PRECISA SER RECEBIDO
-        this.pin = pin;
-        this.quantidadeDeTentativa = quantidadeDeTentativa;
+    public TransicaoPin(String pin,  Usuario usuario) throws TransicaoPinException {  // VALORES QUE PRECISA SER RECEBIDO
+        setPin(pin);
+        this.quantidadeDeTentativa = 3;
         this.usuario = usuario;
-        this.bloqueado = bloqueado;
+        this.bloqueado = false;
         this.criandoAt = LocalDateTime.now(); //Não precisa receber esse valor, mas vai ser mostrado
     }
 
