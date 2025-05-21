@@ -2,7 +2,9 @@ package dev.gustavosdaniel.usecase;
 
 import dev.gustavosdanielcore.domain.Transicao;
 
+import java.math.BigDecimal;
+
 public interface TransferirUseCase {
 
-    Boolean tranferir(Transicao transicao);
+    Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor);
 }
