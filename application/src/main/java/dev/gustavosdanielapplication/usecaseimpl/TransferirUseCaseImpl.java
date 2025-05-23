@@ -1,9 +1,14 @@
 package dev.gustavosdanielapplication.usecaseimpl;
 
-import dev.gustavosdaniel.usecase.BuscarCarteiraCPFUseCase;
-import dev.gustavosdaniel.usecase.TransferirUseCase;
-import dev.gustavosdaniel.usecase.ValidarTransacaoUseCase;
+import dev.gustavosdaniel.usecase.*;
+import dev.gustavosdanielapplication.gateway.TransferirGateway;
 import dev.gustavosdanielcore.domain.Carteira;
+import dev.gustavosdanielcore.domain.Transicao;
+import dev.gustavosdanielcore.exception.InternalServerErrorException;
+import dev.gustavosdanielcore.exception.NotFoundException;
+import dev.gustavosdanielcore.exception.NotificacaoException;
+import dev.gustavosdanielcore.exception.TransferenciaException;
+import dev.gustavosdanielcore.exception.enums.ErrorCodeEnum;
 
 import java.math.BigDecimal;
 
@@ -11,19 +16,39 @@ public class TransferirUseCaseImpl implements TransferirUseCase {
 
     private BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase;
     private ValidarTransacaoUseCase validarTransacaoUseCase;
+    private CriarTransicaoUseCase criarTransicaoUseCase;
+    private TransferirGateway transferirGateway;
+    private UsuarioNotificacaoUseCase usuarioNotificacaoUseCase;
 
-    public TransferirUseCaseImpl(BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase, ValidarTransacaoUseCase validarTransacaoUseCase) {
+    public TransferirUseCaseImpl(BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase, CriarTransicaoUseCase criarTransicaoUseCase, TransferirGateway transferirGateway, ValidarTransacaoUseCase validarTransacaoUseCase, UsuarioNotificacaoUseCase usuarioNotificacaoUseCase) {
         this.buscarCarteiraCPFUseCase = buscarCarteiraCPFUseCase;
+        this.criarTransicaoUseCase = criarTransicaoUseCase;
+        this.transferirGateway = transferirGateway;
         this.validarTransacaoUseCase = validarTransacaoUseCase;
+        this.usuarioNotificacaoUseCase = usuarioNotificacaoUseCase;
     }
 
     @Override
-    public Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor) {
-        Carteira de = buscarCarteiraCPFUseCase.fundBayValidandoCPF(deCPF);
-        Carteira para = buscarCarteiraCPFUseCase.fundBayValidandoCPF(paraCPF);
+    public Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor) throws InternalServerErrorException, TransferenciaException, NotFoundException, NotificacaoException {
+        Carteira de = buscarCarteiraCPFUseCase.fundBayCPFValido(deCPF);
+        Carteira para = buscarCarteiraCPFUseCase.fundBayCPFValido(paraCPF);
 
-        validarTransacaoUseCase.validar()
+        de.tranferir(valor);
+        para.receberTransferencia(valor);
 
-        return null;
+        Transicao transferir = criarTransicaoUseCase.criar(new Transicao(de, para, valor));
+
+        validarTransacaoUseCase.validar(transferir);
+
+        if (!transferirGateway.transicao(transferir)){// CASO A TRANSFERENCIA NÃO SEJA REALIZADA
+            throw new InternalServerErrorException(ErrorCodeEnum.TRAN0001.getMensagem(), ErrorCodeEnum.TRAN0001.getCodego());
+        };
+
+        if (!usuarioNotificacaoUseCase.notificar(transferir, para.getUsuario().getEmail())){
+
+            throw new NotificacaoException(ErrorCodeEnum.NO0001.getMensagem(), ErrorCodeEnum.NO0001.getCodego());
+        }
+
+        return true;
     }// VALIDANDO SE EXISTE OS NUMEROS DE CPF
 }

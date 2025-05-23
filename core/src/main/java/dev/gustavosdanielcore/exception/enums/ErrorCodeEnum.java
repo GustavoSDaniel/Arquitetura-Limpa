@@ -8,7 +8,13 @@ public enum ErrorCodeEnum {
     TR0002("Saldo indisponivel", "TR-0002"),
     TRP0001("Pin inválido", "TRP-0001"),
     EMA0001("Email já utilizado", "EMA-0001"),
-    ON0004("Houver um erro na criação doo usuario", "ON-0004");
+    ON0004("Houver um erro na criação doo usuario", "ON-0004"),
+    TRAN0001("Houve um erro ao realizar a transferencia", "TRAN-0001"),
+    NOT0001("Carteira não encontrada", "NOT-0001"),
+    NO0001("Houve um erro na notificação do usúario", "NO-0001"),
+    TRAN0002("Transferencia não autorizada", "TRAN-0002"),
+    ATHN0002("Houve um erro de autentificalçao", "ATH-0002");
+
 
 
 

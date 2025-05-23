@@ -79,4 +79,8 @@ public class Carteira {
         }
         this.saldo.subtract(valor);
     }
+
+    public void receberTransferencia(BigDecimal valor){
+        this.saldo.add(valor);
+    }
 }
