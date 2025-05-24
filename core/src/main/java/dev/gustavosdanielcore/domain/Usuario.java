@@ -10,32 +10,32 @@ public class Usuario {
     private Long id;
     private String email;
     private String senha;
-    private ValidandoCPF validandoCPF;
+    private ValidandoCPF numeroCPF;
     private String nomeCompleto;
     private TipoUsuarioEnum tipo;
     private TransicaoPin transicaoPin;
     private  LocalDateTime criandoAt;
-    private LocalDateTime atuaalizandoAt;
+    private LocalDateTime atualizandoAt;
 
     public Usuario() {
     }
 
-    public Usuario(TransicaoPin transicaoPin, TipoUsuarioEnum tipo, ValidandoCPF validandoCPF, String senha, String nomeCompleto, Long id, String email, LocalDateTime criandoAt, LocalDateTime atuaalizandoAt) {
+    public Usuario(TransicaoPin transicaoPin, TipoUsuarioEnum tipo, ValidandoCPF numeroCPF, String senha, String nomeCompleto, Long id, String email, LocalDateTime criandoAt, LocalDateTime atualizandoAt) {
         this.transicaoPin = transicaoPin;
         this.tipo = tipo;
-        this.validandoCPF = validandoCPF;
+        this.numeroCPF = numeroCPF;
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
         this.id = id;
         this.email = email;
         this.criandoAt = criandoAt;
-        this.atuaalizandoAt = atuaalizandoAt;
+        this.atualizandoAt = atualizandoAt;
     }
 
-    public Usuario(TransicaoPin transicaoPin, TipoUsuarioEnum tipo, ValidandoCPF validandoCPF, String senha, String nomeCompleto, String email) {
+    public Usuario(TransicaoPin transicaoPin, TipoUsuarioEnum tipo, ValidandoCPF numeroCPF, String senha, String nomeCompleto, String email) {
         this.transicaoPin = transicaoPin;
         this.tipo = tipo;
-        this.validandoCPF = validandoCPF;
+        this.numeroCPF = numeroCPF;
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
         this.email = email;
@@ -59,11 +59,11 @@ public class Usuario {
     }
 
     public ValidandoCPF getTaxNumber() {
-        return validandoCPF;
+        return numeroCPF;
     }
 
     public void setTaxNumber(ValidandoCPF validandoCPF) {
-        this.validandoCPF = validandoCPF;
+        this.numeroCPF = validandoCPF;
     }
 
     public String getSenha() {
@@ -102,12 +102,12 @@ public class Usuario {
         return criandoAt;
     }
 
-    public LocalDateTime getAtuaalizandoAt() {
-        return atuaalizandoAt;
+    public LocalDateTime getAtualizandoAt() {
+        return atualizandoAt;
     }
 
-    public void setAtuaalizandoAt(LocalDateTime atuaalizandoAt) {
-        this.atuaalizandoAt = atuaalizandoAt;
+    public void setAtualizandoAt(LocalDateTime atualizandoAt) {
+        this.atualizandoAt = atualizandoAt;
     }
 
 
@@ -118,7 +118,7 @@ public class Usuario {
         if (o == null || getClass() != o.getClass()) return false;
 
         Usuario usuario = (Usuario) o;
-        return id.equals(usuario.id) && email.equals(usuario.email) && senha.equals(usuario.senha) && validandoCPF.equals(usuario.validandoCPF) && nomeCompleto.equals(usuario.nomeCompleto) && tipo == usuario.tipo && transicaoPin.equals(usuario.transicaoPin) && criandoAt.equals(usuario.criandoAt) && Objects.equals(atuaalizandoAt, usuario.atuaalizandoAt);
+        return id.equals(usuario.id) && email.equals(usuario.email) && senha.equals(usuario.senha) && numeroCPF.equals(usuario.numeroCPF) && nomeCompleto.equals(usuario.nomeCompleto) && tipo == usuario.tipo && transicaoPin.equals(usuario.transicaoPin) && criandoAt.equals(usuario.criandoAt) && Objects.equals(atualizandoAt, usuario.atualizandoAt);
     }
 
     @Override
@@ -126,12 +126,12 @@ public class Usuario {
         int result = id.hashCode();
         result = 31 * result + email.hashCode();
         result = 31 * result + senha.hashCode();
-        result = 31 * result + validandoCPF.hashCode();
+        result = 31 * result + numeroCPF.hashCode();
         result = 31 * result + nomeCompleto.hashCode();
         result = 31 * result + tipo.hashCode();
         result = 31 * result + transicaoPin.hashCode();
         result = 31 * result + criandoAt.hashCode();
-        result = 31 * result + Objects.hashCode(atuaalizandoAt);
+        result = 31 * result + Objects.hashCode(atualizandoAt);
         return result;
     }
 }

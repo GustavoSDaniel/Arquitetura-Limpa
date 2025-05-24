@@ -1,0 +1,10 @@
+CREATE TABLE usuario (
+    id BIGSERIAL PRIMARY KEY,
+    email VARCHAR(80) NOT NULL UNIQUE,
+    senha VARCHAR(50) NOT NULL,
+    numero_cpf VARCHAR(15) NOT NULL UNIQUE,
+    nome_completo VARCHAR(80) NOT NULL,
+    tipo VARCHAR(40) NOT NULL,
+    criando_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    atualizando_at TIMESTAMP
+);
