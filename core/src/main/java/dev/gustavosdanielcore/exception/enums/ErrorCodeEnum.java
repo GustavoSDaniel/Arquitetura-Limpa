@@ -13,7 +13,9 @@ public enum ErrorCodeEnum {
     NOT0001("Carteira não encontrada", "NOT-0001"),
     NO0001("Houve um erro na notificação do usúario", "NO-0001"),
     TRAN0002("Transferencia não autorizada", "TRAN-0002"),
-    ATHN0002("Houve um erro de autentificalçao", "ATH-0002");
+    ATHN0002("Houve um erro de autentificalçao", "ATH-0002"),
+    PIN0001("Pin de transação bloqueado", "PIN-0001"),
+    PIN0002("Pin incorreto, %d tentativa(s) restante(s)", "PIN-0002"); //O "%d" vai ser subistituido pelo "quantidadeDeTentativas"
 
 
 
@@ -41,4 +43,8 @@ public enum ErrorCodeEnum {
     public void setCodego(String codego) {
         this.codego = codego;
     }
+
+    public static String pin0002GetMensagem(Integer quantidadeDeTentativas ){
+        return String.format(PIN0002.mensagem, quantidadeDeTentativas);
+    } // STATIC PARA QUE NÃO PRECISA FICAR INSTANCIANDO
 }

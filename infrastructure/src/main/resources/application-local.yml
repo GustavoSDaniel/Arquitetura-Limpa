@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:arquiteturalimpa;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE # URL de conexão para H2 em memória
+    username: sa # Usuário padrão para H2
+    password: # Senha vazia para H2
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # 'update' para atualizar o schema, 'create' para criar do zero, 'none' para não fazer nada
+    show-sql: true # Mostra as queries SQL no console
+    properties:
+      hibernate:
+        format_sql: true # Formata o SQL para melhor legibilidade
+    database-platform: org.hibernate.dialect.H2Dialect # Dialeto do Hibernate para H2
+  h2:
+    console:
+      enabled: true # Habilita o console web do H2
+      path: /h2-console # Caminho para acessar o console do H2 (ex: http://localhost:8080/h2-console

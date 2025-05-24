@@ -4,10 +4,7 @@ import dev.gustavosdaniel.usecase.*;
 import dev.gustavosdanielapplication.gateway.TransferirGateway;
 import dev.gustavosdanielcore.domain.Carteira;
 import dev.gustavosdanielcore.domain.Transicao;
-import dev.gustavosdanielcore.exception.InternalServerErrorException;
-import dev.gustavosdanielcore.exception.NotFoundException;
-import dev.gustavosdanielcore.exception.NotificacaoException;
-import dev.gustavosdanielcore.exception.TransferenciaException;
+import dev.gustavosdanielcore.exception.*;
 import dev.gustavosdanielcore.exception.enums.ErrorCodeEnum;
 
 import java.math.BigDecimal;
@@ -19,22 +16,26 @@ public class TransferirUseCaseImpl implements TransferirUseCase {
     private CriarTransicaoUseCase criarTransicaoUseCase;
     private TransferirGateway transferirGateway;
     private UsuarioNotificacaoUseCase usuarioNotificacaoUseCase;
+    private ValidarTransacaoPinUseCase validarTransacaoPinUseCase;
 
-    public TransferirUseCaseImpl(BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase, CriarTransicaoUseCase criarTransicaoUseCase, TransferirGateway transferirGateway, ValidarTransacaoUseCase validarTransacaoUseCase, UsuarioNotificacaoUseCase usuarioNotificacaoUseCase) {
+    public TransferirUseCaseImpl(BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase, CriarTransicaoUseCase criarTransicaoUseCase, TransferirGateway transferirGateway, ValidarTransacaoUseCase validarTransacaoUseCase, UsuarioNotificacaoUseCase usuarioNotificacaoUseCase, ValidarTransacaoPinUseCase validarTransacaoPinUseCase) {
         this.buscarCarteiraCPFUseCase = buscarCarteiraCPFUseCase;
         this.criarTransicaoUseCase = criarTransicaoUseCase;
         this.transferirGateway = transferirGateway;
         this.validarTransacaoUseCase = validarTransacaoUseCase;
         this.usuarioNotificacaoUseCase = usuarioNotificacaoUseCase;
+        this.validarTransacaoPinUseCase = validarTransacaoPinUseCase;
     }
 
     @Override
-    public Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor) throws InternalServerErrorException, TransferenciaException, NotFoundException, NotificacaoException {
+    public Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor, String pin) throws InternalServerErrorException, TransferenciaException, NotFoundException, NotificacaoException, PinException {
         Carteira de = buscarCarteiraCPFUseCase.fundBayCPFValido(deCPF);
         Carteira para = buscarCarteiraCPFUseCase.fundBayCPFValido(paraCPF);
 
         de.tranferir(valor);
         para.receberTransferencia(valor);
+
+        validarTransacaoPinUseCase.validar(de.getTransicaoPin());
 
         Transicao transferir = criarTransicaoUseCase.criar(new Transicao(de, para, valor));
 

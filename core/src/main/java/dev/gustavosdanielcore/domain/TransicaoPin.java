@@ -38,8 +38,18 @@ public class TransicaoPin {
         return quantidadeDeTentativa;
     }
 
-    public void setQuantidadeDeTentativa(Integer quantidadeDeTentativa) {
-        this.quantidadeDeTentativa = quantidadeDeTentativa;
+    public void setQuantidadeDeTentativa() {
+
+        if (this.quantidadeDeTentativa == 1 ){
+            this.bloqueado = true;
+            this.quantidadeDeTentativa = 0;
+        }else {
+            this.quantidadeDeTentativa = this.quantidadeDeTentativa - 1;
+        } //SE Q AUTNIDADE DE TENTATIVAS FOR IGUAL A 1 ELE JA VAI BLOQUEAR O SUARIO CASO FOR PÁRA 0 SE NÃO VAI CONTINUAR SUBITRAINDO
+    }
+
+    public void restaurarQuantidadeTentativa(){
+        this.quantidadeDeTentativa = 3;
     }
 
     public String getPin() {
