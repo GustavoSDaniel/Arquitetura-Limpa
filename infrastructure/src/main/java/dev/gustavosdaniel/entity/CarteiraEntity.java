@@ -23,14 +23,12 @@ public class CarteiraEntity {
     @Column(name = "saldo", nullable = false)
     private BigDecimal saldo;
 
-    @Column(name = "usuario_id", nullable = false)
     @OneToOne
-    @JoinColumn(name = "carteira") // Coluna FK na tabela atual
+    @JoinColumn(name = "usuario_id") // Coluna FK na tabela atual
     private UsuarioEntity usuario;
 
-    @Column(name = "transicao_pin_id", nullable = false)
     @OneToOne
-    @JoinColumn(name = "carteira") // Coluna FK na tabela atual
+    @JoinColumn(name = "transicao_pin_id") // Coluna FK na tabela atual
     private TransicaoPinEntity transicaoPin;
 
     @Column(name = "criado_em", nullable = false)

@@ -21,14 +21,12 @@ public class TransacaoEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "para_carteira", nullable = false)
     @ManyToOne // MUITAS TRANSAÇÕES PARA UMA CARTEIRA
-    @JoinColumn(name = "transacao")
+    @JoinColumn(name = "para_carteira") // Coluna FK na tabela atual
     private CarteiraEntity paraCarteira;
 
-    @Column(name = "de_carteira", nullable = false)
     @ManyToOne // MUITAS TRANSAÇÕES PARA UMA CARTEIRA
-    @JoinColumn(name = "transacao")
+    @JoinColumn(name = "de_carteira") // Coluna FK na tabela atual
     private CarteiraEntity deCarteira;
 
     @Column(name = "valor_da_transacao", nullable = false)
