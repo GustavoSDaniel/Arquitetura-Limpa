@@ -4,11 +4,11 @@ import dev.gustavosdanielcore.exception.TransicaoPinException;
 import dev.gustavosdanielcore.exception.enums.ErrorCodeEnum;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class TransicaoPin {
 
     private Long id;
-    private Usuario usuario;
     private String pin;
     private Integer quantidadeDeTentativa;
     private Boolean bloqueado;
@@ -18,8 +18,7 @@ public class TransicaoPin {
     public TransicaoPin() {
     }
 
-    public TransicaoPin(Usuario usuario, Integer quantidadeDeTentativa, String pin, Long id, LocalDateTime criandoAt, Boolean bloqueado, LocalDateTime atuaalizandoAt) {
-        this.usuario = usuario;
+    public TransicaoPin(Integer quantidadeDeTentativa, String pin, Long id, LocalDateTime criandoAt, Boolean bloqueado, LocalDateTime atuaalizandoAt) {
         this.quantidadeDeTentativa = quantidadeDeTentativa;
         this.pin = pin;
         this.id = id;
@@ -28,20 +27,11 @@ public class TransicaoPin {
         this.atuaalizandoAt = atuaalizandoAt;
     }
 
-    public TransicaoPin(String pin,  Usuario usuario) throws TransicaoPinException {  // VALORES QUE PRECISA SER RECEBIDO
+    public TransicaoPin(String pin) throws TransicaoPinException {  // VALORES QUE PRECISA SER RECEBIDO
         setPin(pin);
         this.quantidadeDeTentativa = 3;
-        this.usuario = usuario;
         this.bloqueado = false;
         this.criandoAt = LocalDateTime.now(); //Não precisa receber esse valor, mas vai ser mostrado
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Integer getQuantidadeDeTentativa() {
@@ -94,5 +84,24 @@ public class TransicaoPin {
             throw new TransicaoPinException(ErrorCodeEnum.TRP0001.getMensagem(), ErrorCodeEnum.TRP0001.getCodego());
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TransicaoPin that = (TransicaoPin) o;
+        return Objects.equals(id, that.id) && pin.equals(that.pin) && quantidadeDeTentativa.equals(that.quantidadeDeTentativa) && bloqueado.equals(that.bloqueado) && criandoAt.equals(that.criandoAt) && Objects.equals(atuaalizandoAt, that.atuaalizandoAt);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hashCode(id);
+        result = 31 * result + pin.hashCode();
+        result = 31 * result + quantidadeDeTentativa.hashCode();
+        result = 31 * result + bloqueado.hashCode();
+        result = 31 * result + criandoAt.hashCode();
+        result = 31 * result + Objects.hashCode(atuaalizandoAt);
+        return result;
     }
 }

@@ -37,7 +37,7 @@ public class CriarUsuarioUseCaseImpl implements CriarUsuarioUseCase {
             throw new EmailException(ErrorCodeEnum.EMA0001.getMensagem(), ErrorCodeEnum.EMA0001.getCodego());
         }// SE O EMAIL NÃO FOR VALIDO VAI LANÇAR ESSA EXEÇÃO
 
-        if (!criarUsuarioGateway.criar(usuario, new Carteira(usuario, BigDecimal.ZERO), new TransicaoPin(pin, usuario))){
+        if (!criarUsuarioGateway.criar(usuario, new Carteira(usuario, BigDecimal.ZERO, new TransicaoPin(pin)))){
             throw new InternalServerErrorException(ErrorCodeEnum.ON0004.getMensagem(), ErrorCodeEnum.ON0004.getCodego());
         }// VAI CRIAR DE UMA VEIS SÓ TANTO O USUARIO QUANTO A CARTEIRA E O PIN
 

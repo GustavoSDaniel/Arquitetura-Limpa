@@ -6,5 +6,5 @@ import dev.gustavosdanielcore.domain.Usuario;
 
 public interface CriarUsuarioGateway {
 
-    Boolean criar(Usuario usuario, Carteira carteira, TransicaoPin transicaoPin);
+    Boolean criar(Usuario usuario, Carteira carteira);
 }
