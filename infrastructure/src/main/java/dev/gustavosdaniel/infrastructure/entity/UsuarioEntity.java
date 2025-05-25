@@ -1,4 +1,4 @@
-package dev.gustavosdaniel.entity;
+package dev.gustavosdaniel.infrastructure.entity;
 
 import dev.gustavosdanielcore.domain.enums.TipoUsuarioEnum;
 import jakarta.persistence.*;
@@ -39,8 +39,16 @@ public class UsuarioEntity {
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criandoAt;
 
-    @Column(name = "atualizado_em", nullable = false)
+    @Column(name = "atualizado_em")
     private LocalDateTime atualizadoAt;
 
-
+    public UsuarioEntity(String nomeCompleto,String email,String numeroCPF,String senha, TipoUsuarioEnum tipo,    LocalDateTime criandoAt, LocalDateTime atualizadoAt) {
+        this.nomeCompleto = nomeCompleto;
+        this.email = email;
+        this.numeroCPF = numeroCPF;
+        this.senha = senha;
+        this.tipo = tipo;
+        this.criandoAt = criandoAt;
+        this.atualizadoAt = atualizadoAt;
+    }
 }

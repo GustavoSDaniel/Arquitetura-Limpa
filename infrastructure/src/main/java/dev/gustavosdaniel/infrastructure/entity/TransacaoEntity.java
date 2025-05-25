@@ -1,4 +1,4 @@
-package dev.gustavosdaniel.entity;
+package dev.gustavosdaniel.infrastructure.entity;
 
 import dev.gustavosdanielcore.domain.enums.TransicaoStatusEnum;
 import jakarta.persistence.*;
@@ -40,6 +40,6 @@ public class TransacaoEntity {
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criandoAt;
 
-    @Column(name = "atualizado_em", nullable = false)
+    @Column(name = "atualizado_em")
     private LocalDateTime atualizadoAt;
 }

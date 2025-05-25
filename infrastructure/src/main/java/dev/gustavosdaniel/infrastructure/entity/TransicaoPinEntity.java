@@ -1,4 +1,4 @@
-package dev.gustavosdaniel.entity;
+package dev.gustavosdaniel.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,7 +31,14 @@ public class TransicaoPinEntity {
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criandoAt;
 
-    @Column(name = "atualizado_em", nullable = false)
+    @Column(name = "atualizado_em")
     private LocalDateTime atualizadoAt;
 
+    public TransicaoPinEntity(String pin,Integer quantidadeDeTentativa,Boolean bloqueado,  LocalDateTime criandoAt,  LocalDateTime atualizadoAt) {
+        this.pin = pin;
+        this.quantidadeDeTentativa = quantidadeDeTentativa;
+        this.bloqueado = bloqueado;
+        this.criandoAt = criandoAt;
+        this.atualizadoAt = atualizadoAt;
+    }
 }
