@@ -2,9 +2,12 @@ package dev.gustavosdaniel.infrastructure.service;
 
 import dev.gustavosdaniel.infrastructure.repository.UsuarioEntityRepository;
 import dev.gustavosdanielapplication.gateway.ValidarCPFUseCaseGatewway;
+import org.springframework.stereotype.Service;
+
 import static dev.gustavosdaniel.infrastructure.utils.Utilites.log;
 //DESSA FORMA EU CONSIGO CHAMAR O METODO DIRETO SEM PRECISAR CHAMAR O NOME DA CLASSE
 
+@Service
 public class ValidarCPFUseCaseGatewwayImpl implements ValidarCPFUseCaseGatewway {
     private UsuarioEntityRepository usuarioEntityRepository;
 
