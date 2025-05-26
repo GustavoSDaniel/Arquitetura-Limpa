@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioEntityRepository extends JpaRepository<UsuarioEntity, Long> {
 
-    Boolean existsByValidarCPF(String cpfValidado);
-    Boolean existsByAvaliarEmail(String email);
+    Boolean existsByNumeroCPF(String cpfValidado);
+    Boolean existsByEmail(String email);
 }

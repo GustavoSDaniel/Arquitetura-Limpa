@@ -21,6 +21,6 @@ public class ValidarCPFUseCaseGatewwayImpl implements ValidarCPFUseCaseGatewway 
     @Override
     public Boolean validandoCPF(String cpfValidado) {
         log.info("Inicio da verificação se o CPF est[a disponivel");
-        return !usuarioEntityRepository.existsByValidarCPF(cpfValidado);
+        return !usuarioEntityRepository.existsByNumeroCPF(cpfValidado);
     } // METODO PARA SABER SE O NUMERO DO CPF INFORMADO ESTA DISPONIVEL
 }

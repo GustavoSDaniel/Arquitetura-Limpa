@@ -20,6 +20,6 @@ public class AvaliarEmailUseCaseGatewayImpl implements AvaliarEmailUseCaseGatewa
     public Boolean avaliarEmail(String email) {
         log.info("Inicio da verificação se o email est[a disponivel");
 
-        return !usuarioEntityRepository.existsByAvaliarEmail(email);
+        return !usuarioEntityRepository.existsByEmail(email);
     } // CASO O EMAIL NÃO EXISTA VAI RETORNAR TRUE
 }
