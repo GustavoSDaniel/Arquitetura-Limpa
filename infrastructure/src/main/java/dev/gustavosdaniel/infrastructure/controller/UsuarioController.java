@@ -12,7 +12,7 @@ import static dev.gustavosdaniel.infrastructure.utils.Utilites.log;
 //DESSA FORMA EU CONSIGO CHAMAR O METODO DIRETO SEM PRECISAR CHAMAR O NOME DA CLASSE
 
 @RestController
-@RequestMapping("api/vi/usuario")
+@RequestMapping("api/v1/usuario")
 public class UsuarioController {
 
     private CriarUsuarioUseCase criarUsuarioUseCase;

@@ -33,8 +33,8 @@ public class Usuario {
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
         this.email = email;
-
-    }
+        this.criandoAt = LocalDateTime.now();
+    } // CONSTRUTOR PARA CRIAR USUARIO
 
     public TipoUsuarioEnum getTipo() {
         return tipo;
