@@ -4,4 +4,6 @@ import dev.gustavosdaniel.infrastructure.entity.CarteiraEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CarteiraEntityRepository extends JpaRepository<CarteiraEntity, Long> {
+
+    CarteiraEntity findByUsuarioNumeroCPF(String numeroCPF);
 }

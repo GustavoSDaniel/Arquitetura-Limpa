@@ -4,5 +4,5 @@ import dev.gustavosdanielcore.domain.Carteira;
 
 public interface BuscarCarteiraCPFGateway {
 
-    Carteira findByNumeroCPF(String numeroCPF);
+    Carteira findByNumeroCPF(String numeroCPF) throws Exception;
 }

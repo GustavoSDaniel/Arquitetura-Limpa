@@ -16,4 +16,15 @@ public class TransicaoPinMapper {
                transicaoPin.getAtuaalizandoAt()
        );
    }
+
+   public TransicaoPin paraTransicaoPin(TransicaoPinEntity transicaoPinEntity){
+        return new TransicaoPin(
+                transicaoPinEntity.getQuantidadeDeTentativa(),
+                transicaoPinEntity.getPin(),
+                transicaoPinEntity.getId(),
+                transicaoPinEntity.getCriandoAt(),
+                transicaoPinEntity.getBloqueado(),
+                transicaoPinEntity.getAtualizadoAt()
+        )
+   }
 }

@@ -15,7 +15,7 @@ public class BuscarCarteiraCPFUseCaseImpl implements BuscarCarteiraCPFUseCase {
     }
 
     @Override
-    public Carteira fundBayCPFValido(String cpfValidado) throws NotFoundException {
+    public Carteira fundBayCPFValido(String cpfValidado) throws Exception {
 
         Carteira carteira = buscarCarteiraCPFGateway.findByNumeroCPF(cpfValidado);
 

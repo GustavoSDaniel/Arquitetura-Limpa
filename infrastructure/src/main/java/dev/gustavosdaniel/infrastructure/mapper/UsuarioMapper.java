@@ -25,9 +25,22 @@ public class UsuarioMapper {
         return new Usuario(
                 request.tipoUsuarioEnum(),
                 new ValidandoCPF(request.numeroCPF()),
-                request.senha(),
+                request.nomeCompleto(),
                 request.senha(),
                 request.email()
+        );
+    }
+
+    public Usuario paraUsuario(UsuarioEntity usuarioEntity) throws Exception {
+        return new Usuario(
+                usuarioEntity.getTipo(),
+                new ValidandoCPF(usuarioEntity.getNumeroCPF()),
+                usuarioEntity.getSenha(),
+                usuarioEntity.getNomeCompleto(),
+                usuarioEntity.getId(),
+                usuarioEntity.getEmail(),
+                usuarioEntity.getCriandoAt(),
+                usuarioEntity.getAtualizadoAt()
         );
     }
 }
