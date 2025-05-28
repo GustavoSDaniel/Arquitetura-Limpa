@@ -20,3 +20,6 @@ server:
   jwt:
     secret: "suaChaveSecretaMuitoSegura123!@#" # Troque por uma chave forte
     expiration: 900 # 24h em milissegundos
+
+client:
+  url: https://run.mocky.io/v3/dca4a09c-1842-4fcf-bb9c-f06cbd2cede7

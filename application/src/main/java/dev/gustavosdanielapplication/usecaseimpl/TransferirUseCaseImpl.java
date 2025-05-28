@@ -28,7 +28,7 @@ public class TransferirUseCaseImpl implements TransferirUseCase {
     }
 
     @Override
-    public Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor, String pin) throws InternalServerErrorException, TransferenciaException, NotFoundException, NotificacaoException, PinException {
+    public Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor, String pin) throws Exception {
         Carteira de = buscarCarteiraCPFUseCase.fundBayCPFValido(deCPF);
         Carteira para = buscarCarteiraCPFUseCase.fundBayCPFValido(paraCPF);
 

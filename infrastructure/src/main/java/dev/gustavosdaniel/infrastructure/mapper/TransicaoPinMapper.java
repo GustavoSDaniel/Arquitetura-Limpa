@@ -25,6 +25,6 @@ public class TransicaoPinMapper {
                 transicaoPinEntity.getCriandoAt(),
                 transicaoPinEntity.getBloqueado(),
                 transicaoPinEntity.getAtualizadoAt()
-        )
+        );
    }
 }

@@ -7,5 +7,5 @@ import java.math.BigDecimal;
 
 public interface TransferirUseCase {
 
-    Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor, String pin) throws InternalServerErrorException, TransferenciaException, NotFoundException, NotificacaoException, PinException;
+    Boolean tranferir(String deCPF, String paraCPF, BigDecimal valor, String pin) throws Exception;
 }
