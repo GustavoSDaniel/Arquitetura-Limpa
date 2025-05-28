@@ -42,4 +42,13 @@ public class TransacaoEntity {
 
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoAt;
+
+    public TransacaoEntity(CarteiraEntity deCarteira, CarteiraEntity paraCarteira,  BigDecimal valor, TransicaoStatusEnum status, LocalDateTime criandoAt, LocalDateTime atualizadoAt) {
+        this.deCarteira = deCarteira;
+        this.paraCarteira = paraCarteira;
+        this.valor = valor;
+        this.status = status;
+        this.criandoAt = criandoAt;
+        this.atualizadoAt = atualizadoAt;
+    }
 }

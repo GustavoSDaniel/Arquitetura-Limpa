@@ -5,5 +5,5 @@ import dev.gustavosdanielcore.exception.TransferenciaException;
 
 public interface CriarTransicaoUseCase {
 
-    Transicao criar(Transicao transicao) throws TransferenciaException;
+    Transicao criar(Transicao transicao) throws Exception;
 }

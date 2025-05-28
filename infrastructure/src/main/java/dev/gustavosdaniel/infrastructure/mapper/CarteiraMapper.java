@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class CarteiraMapper {
 
     private TransicaoPinMapper transicaoPinMapper;
-private UsuarioMapper usuarioMapper;
+    private UsuarioMapper usuarioMapper;
 
     public CarteiraMapper(TransicaoPinMapper transicaoPinMapper, UsuarioMapper usuarioMapper) {
         this.transicaoPinMapper = transicaoPinMapper;
@@ -23,6 +23,16 @@ private UsuarioMapper usuarioMapper;
                 usuarioEntity,
                 carteira.getSaldo(),
                 transicaoPinEntity,
+                carteira.getCriandoAt(),
+                carteira.getAtualizandoAt()
+        );
+    };
+
+    public CarteiraEntity paraCarteiraEntity(Carteira carteira){
+        return new CarteiraEntity(
+                usuarioMapper.paraUsuarioEntity(carteira.getUsuario()),
+                carteira.getSaldo(),
+                transicaoPinMapper.paraTransicaoPinEntity(carteira.getTransicaoPin()),
                 carteira.getCriandoAt(),
                 carteira.getAtualizandoAt()
         );

@@ -11,7 +11,7 @@ public class CriarTransicaoUseCaseImpl implements CriarTransicaoUseCase {
     private CriarTransicaoGateway criarTransicaoGateway;
 
     @Override
-    public Transicao criar(Transicao transicao) throws TransferenciaException {
+    public Transicao criar(Transicao transicao) throws Exception {
 
         Transicao salvarTransacao = criarTransicaoGateway.criar(transicao);
 
