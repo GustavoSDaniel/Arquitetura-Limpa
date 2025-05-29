@@ -1,5 +1,6 @@
 package dev.gustavosdaniel.infrastructure.mapper;
 
+import dev.gustavosdaniel.infrastructure.entity.CarteiraEntity;
 import dev.gustavosdaniel.infrastructure.entity.TransacaoEntity;
 import dev.gustavosdanielcore.domain.Transicao;
 import dev.gustavosdanielcore.domain.enums.TransicaoStatusEnum;
@@ -46,5 +47,29 @@ public class TransacaoMapper {
                 transacaoEntity.getAtualizadoAt()
         );
 
+    }
+
+    public TransacaoEntity transacaoConcluida(Transicao transicao) {
+        return new TransacaoEntity(
+                transicao.getId(),
+                carteiraMapper.paraCarteiraEntity(transicao.getDaCarteira()),
+                carteiraMapper.paraCarteiraEntity(transicao.getParaCarteira()),
+                transicao.getValor(),
+                TransicaoStatusEnum.SUCESSO,
+                transicao.getCriandoAt(),
+                transicao.getAtualizandoAt()
+        );
+    }
+
+    public TransacaoEntity cancelarTransicao(Transicao transicao) {
+        return new TransacaoEntity(
+                transicao.getId(),
+                carteiraMapper.paraCarteiraEntity(transicao.getDaCarteira()),
+                carteiraMapper.paraCarteiraEntity(transicao.getParaCarteira()),
+                transicao.getValor(),
+                TransicaoStatusEnum.CANCELADO,
+                transicao.getCriandoAt(),
+                transicao.getAtualizandoAt()
+        );
     }
 }

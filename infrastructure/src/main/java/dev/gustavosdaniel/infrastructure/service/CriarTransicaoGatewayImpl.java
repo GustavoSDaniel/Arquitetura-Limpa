@@ -19,7 +19,7 @@ public class CriarTransicaoGatewayImpl implements CriarTransicaoGateway {
     }
 
     @Override
-    public Transicao criar(Transicao transicao) throws Exception {
+    public Transicao criar(Transicao transicao){
         try {
             TransacaoEntity transacaoEntity = transacaoMapper.criarTransacao(transicao);
             // TransacaoEntity transacaoEntitySalvo = transacaoEntityRepository.save(transacaoEntity); é uma opção tbm
