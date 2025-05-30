@@ -1,24 +1,22 @@
 package dev.gustavosdanielapplication.usecaseimpl;
 
+import dev.gustavosdaniel.usecase.BuscarCarteiraCPFUseCase;
 import dev.gustavosdaniel.usecase.ConsultarSaldoUseCase;
-import dev.gustavosdanielapplication.gateway.ConsultarSaldoGateway;
-import dev.gustavosdanielcore.domain.Carteira;
 
 import java.math.BigDecimal;
 
 public class ConsultarSaldoUseCaseImpl implements ConsultarSaldoUseCase {
 
-    private ConsultarSaldoGateway consultarSaldoGateway;
+    private BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase;
 
-    public ConsultarSaldoUseCaseImpl(ConsultarSaldoGateway consultarSaldoGateway) {
-        this.consultarSaldoGateway = consultarSaldoGateway;
+    public ConsultarSaldoUseCaseImpl(BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase) {
+        this.buscarCarteiraCPFUseCase = buscarCarteiraCPFUseCase;
     }
-
-
 
     @Override
-    public BigDecimal consultar(Carteira carteira) {
+    public BigDecimal consultar(String numeroCPF) throws Exception {
 
-        return consultarSaldoGateway.consultarSaldo(carteira);
+        return buscarCarteiraCPFUseCase.findBayCPFValido(numeroCPF).getSaldo();
     }
+
 }

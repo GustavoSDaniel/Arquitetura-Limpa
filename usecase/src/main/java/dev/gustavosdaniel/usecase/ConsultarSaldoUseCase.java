@@ -6,5 +6,5 @@ import java.math.BigDecimal;
 
 public interface ConsultarSaldoUseCase {
 
-    BigDecimal consultar(Carteira carteira);
+    BigDecimal consultar(String numeroCPF) throws Exception;
 }
