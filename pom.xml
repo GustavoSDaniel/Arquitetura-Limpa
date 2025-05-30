@@ -89,6 +89,9 @@
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.projectlombok</groupId>
@@ -98,6 +101,7 @@
                         </annotationProcessorPaths>
                     </configuration>
                 </plugin>
+
 
                 <!-- Plugin Spring Boot (para módulos que tenham aplicação) -->
                 <plugin>

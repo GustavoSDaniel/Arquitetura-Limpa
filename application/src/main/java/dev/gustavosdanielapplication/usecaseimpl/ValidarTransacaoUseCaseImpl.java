@@ -11,6 +11,11 @@ public class ValidarTransacaoUseCaseImpl implements ValidarTransacaoUseCase {
 
     private ValidarTransacaoGateway validarTransacaoGateway;
 
+    public ValidarTransacaoUseCaseImpl(ValidarTransacaoGateway validarTransacaoGateway) {
+        this.validarTransacaoGateway = validarTransacaoGateway;
+    }
+
+
     @Override
     public Boolean validar(Transicao transicao) throws TransferenciaException {
 
