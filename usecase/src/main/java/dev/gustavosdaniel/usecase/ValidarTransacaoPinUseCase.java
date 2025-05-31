@@ -7,5 +7,5 @@ import dev.gustavosdanielcore.exception.TransferenciaException;
 
 public interface ValidarTransacaoPinUseCase {
 
-    Boolean validar(TransicaoPin transicaoPin) throws TransferenciaException, PinException;
+    Boolean validar(TransicaoPin transicaoPin, String pin) throws TransferenciaException, PinException;
 }

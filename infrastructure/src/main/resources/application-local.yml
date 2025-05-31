@@ -1,21 +1,29 @@
 spring:
+  config:
+    activate:
+      on-profile: local # Este arquivo será carregado apenas quando o perfil 'local' estiver ativo
+
   datasource:
-    url: jdbc:h2:mem:arquiteturalimpa;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE # URL de conexão para H2 em memória
-    username: sa # Usuário padrão para H2
-    password: # Senha vazia para H2
-    driver-class-name: org.h2.Driver
+    # Define a URL de conexão com o banco H2 em modo arquivo, para persistência
+    url: jdbc:h2:file:./data/arquiteturalimpa;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+    username: sa # Usuário padrão do H2
+    password: # Senha em branco (default do H2)
+    driver-class-name: org.h2.Driver # Driver JDBC do H2
+
   jpa:
     hibernate:
-      ddl-auto: update # 'update' para atualizar o schema, 'create' para criar do zero, 'none' para não fazer nada
-    show-sql: true # Mostra as queries SQL no console
+      ddl-auto: update # Atualiza o schema com base nas entidades (sem apagar os dados)
+    show-sql: true # Mostra as queries SQL no console durante a execução
     properties:
       hibernate:
-        format_sql: true # Formata o SQL para melhor legibilidade
-    database-platform: org.hibernate.dialect.H2Dialect # Dialeto do Hibernate para H2
+        format_sql: true # Formata o SQL no console para facilitar a leitura
+    database-platform: org.hibernate.dialect.H2Dialect # Dialeto do Hibernate para o banco H2
+
   h2:
     console:
-      enabled: true # Habilita o console web do H2
-      path: /h2-console # Caminho para acessar o console do H2 (ex: http://localhost:8080/h2-console
+      enabled: true # Habilita o console web do H2 para acessar o banco via navegador
+      path: /h2-console # Caminho para acessar o console (ex: http://localhost:8080/h2-console)
 
   client:
+    # URL externa fictícia usada para chamadas HTTP (mock de API externa)
     url: https://run.mocky.io/v3/dca4a09c-1842-4fcf-bb9c-f06cbd2cede7

@@ -8,14 +8,14 @@ import dev.gustavosdanielcore.exception.enums.ErrorCodeEnum;
 
 public class BuscarCarteiraCPFUseCaseImpl implements BuscarCarteiraCPFUseCase {
 
-    private BuscarCarteiraCPFGateway buscarCarteiraCPFGateway;
+    final private BuscarCarteiraCPFGateway buscarCarteiraCPFGateway;
 
     public BuscarCarteiraCPFUseCaseImpl(BuscarCarteiraCPFGateway buscarCarteiraCPFGateway) {
         this.buscarCarteiraCPFGateway = buscarCarteiraCPFGateway;
     }
 
     @Override
-    public Carteira findBayCPFValido(String cpfValidado) throws Exception {
+    public Carteira findByCPFValido(String cpfValidado) throws Exception {
 
         Carteira carteira = buscarCarteiraCPFGateway.findByNumeroCPF(cpfValidado);
 

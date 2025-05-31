@@ -6,5 +6,7 @@ import dev.gustavosdanielcore.exception.NotFoundException;
 
 public interface BuscarCarteiraCPFUseCase {
 
-    Carteira findBayCPFValido(String cpfValidado) throws Exception;
+    Carteira findByCPFValido(String cpfValidado) throws Exception;
+
+
 }

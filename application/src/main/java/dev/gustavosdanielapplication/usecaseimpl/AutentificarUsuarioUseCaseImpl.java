@@ -7,7 +7,7 @@ import dev.gustavosdanielcore.exception.enums.ErrorCodeEnum;
 
 public class AutentificarUsuarioUseCaseImpl implements AutentificarUsuarioUseCase {
 
-    private AutentificarUsuarioGateway autentificarUsuarioGateway;
+    final private AutentificarUsuarioGateway autentificarUsuarioGateway;
 
     public AutentificarUsuarioUseCaseImpl(AutentificarUsuarioGateway autentificarUsuarioGateway) {
         this.autentificarUsuarioGateway = autentificarUsuarioGateway;

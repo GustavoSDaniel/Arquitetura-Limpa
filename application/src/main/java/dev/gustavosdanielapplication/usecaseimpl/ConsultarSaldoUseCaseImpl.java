@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class ConsultarSaldoUseCaseImpl implements ConsultarSaldoUseCase {
 
-    private BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase;
+    final private BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase;
 
     public ConsultarSaldoUseCaseImpl(BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase) {
         this.buscarCarteiraCPFUseCase = buscarCarteiraCPFUseCase;
@@ -16,7 +16,7 @@ public class ConsultarSaldoUseCaseImpl implements ConsultarSaldoUseCase {
     @Override
     public BigDecimal consultar(String numeroCPF) throws Exception {
 
-        return buscarCarteiraCPFUseCase.findBayCPFValido(numeroCPF).getSaldo();
+        return buscarCarteiraCPFUseCase.findByCPFValido(numeroCPF).getSaldo();
     }
 
 }

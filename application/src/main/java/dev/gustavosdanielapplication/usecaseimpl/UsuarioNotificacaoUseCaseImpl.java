@@ -6,7 +6,7 @@ import dev.gustavosdanielcore.domain.Transicao;
 
 public class UsuarioNotificacaoUseCaseImpl implements UsuarioNotificacaoUseCase {
 
-    private UsuarioNotificacaoGateway usuarioNotificacaoGateway;
+    final private UsuarioNotificacaoGateway usuarioNotificacaoGateway;
 
     public UsuarioNotificacaoUseCaseImpl(UsuarioNotificacaoGateway usuarioNotificacaoGateway) {
         this.usuarioNotificacaoGateway = usuarioNotificacaoGateway;

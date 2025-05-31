@@ -9,7 +9,7 @@ import dev.gustavosdanielcore.exception.enums.ErrorCodeEnum;
 
 public class ValidarTransacaoUseCaseImpl implements ValidarTransacaoUseCase {
 
-    private ValidarTransacaoGateway validarTransacaoGateway;
+    final private ValidarTransacaoGateway validarTransacaoGateway;
 
     public ValidarTransacaoUseCaseImpl(ValidarTransacaoGateway validarTransacaoGateway) {
         this.validarTransacaoGateway = validarTransacaoGateway;

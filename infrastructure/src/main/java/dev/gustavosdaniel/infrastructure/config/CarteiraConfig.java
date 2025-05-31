@@ -1,12 +1,10 @@
 package dev.gustavosdaniel.infrastructure.config;
 
+import dev.gustavosdaniel.infrastructure.service.AtualizarTransicaoPinUseCaseImpl;
 import dev.gustavosdaniel.usecase.*;
-import dev.gustavosdanielapplication.gateway.BuscarCarteiraCPFGateway;
-import dev.gustavosdanielapplication.gateway.TransferirGateway;
-import dev.gustavosdanielapplication.gateway.ValidarTransacaoGateway;
-import dev.gustavosdanielapplication.usecaseimpl.BuscarCarteiraCPFUseCaseImpl;
-import dev.gustavosdanielapplication.usecaseimpl.ConsultarSaldoUseCaseImpl;
-import dev.gustavosdanielapplication.usecaseimpl.ValidarTransacaoUseCaseImpl;
+import dev.gustavosdanielapplication.gateway.*;
+import dev.gustavosdanielapplication.usecaseimpl.*;
+import dev.gustavosdanielcore.domain.TransicaoPin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,9 +26,34 @@ public class CarteiraConfig {
         return new ValidarTransacaoUseCaseImpl(validarTransacaoGateway);
     }
 
+    @Bean
+    public CriarTransicaoUseCase criarTransicaoUseCase(CriarTransicaoGateway criarTransicaoGateway) {
+        return new CriarTransicaoUseCaseImpl(criarTransicaoGateway);
+    }
 
     @Bean
-    public ValidarTransacaoUseCase transacaoUseCase(BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase, CriarTransicaoUseCase criarTransicaoUseCase, TransferirGateway transferirGateway, ValidarTransacaoUseCase validarTransacaoUseCase, UsuarioNotificacaoUseCase usuarioNotificacaoUseCase, ValidarTransacaoPinUseCase validarTransacaoPinUseCase(){
-        return new ValidarTransacaoUseCaseImpl(transacaoUseCaseImpl(buscarCarteiraCPFUseCase,criarTransicaoUseCase,transferirGateway,validarTransacaoUseCase,usuarioNotificacaoUseCase,validarTransacaoPinUseCase));
+    public UsuarioNotificacaoUseCase usuarioNotificacaoUseCase(UsuarioNotificacaoGateway usuarioNotificacaoGateway) {
+        return new UsuarioNotificacaoUseCaseImpl(usuarioNotificacaoGateway);
+    }
+
+    @Bean
+    public AtualizarTransicaoPinUseCase atualizarTransicaoPinUseCase(){
+        return  new AtualizarTransicaoPinUseCase(){
+            @Override
+            public TransicaoPin atualizar(TransicaoPin transicaoPin) {
+                return null;
+            }
+        };
+    }
+
+    @Bean
+    public ValidarTransacaoPinUseCase validarTransacaoPinUseCase(ValidarTransacaoPinGateway validarTransacaoPinGateway, AtualizarTransicaoPinUseCase atualizarTransicaoPinUseCase) {
+        return new ValidarTransacaoPinUseCaseImpl(validarTransacaoPinGateway, atualizarTransicaoPinUseCase);
+    }
+
+    @Bean
+    public TransferirUseCase transacaoUseCase(TransferirGateway transferirGateway){
+        return new TransferirUseCaseImpl( transferirGateway) {
+        };
     }
 }

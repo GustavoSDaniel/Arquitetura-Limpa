@@ -29,8 +29,8 @@ public class UsuarioConfig {
 
 
 @Bean
-    public CriarUsuarioUseCase criarUsuarioUseCase(ValidarCPFUseCase validarCPFUseCase, AvaliarEmailUseCase avaliarEmailUseCase, CriarUsuarioGateway criarUsuarioGateway){
-        return new CriarUsuarioUseCaseImpl(validarCPFUseCase,avaliarEmailUseCase, criarUsuarioGateway);
+    public CriarUsuarioUseCase criarUsuarioUseCase(CriarUsuarioGateway criarUsuarioGateway){
+        return new CriarUsuarioUseCaseImpl(criarUsuarioGateway);
     }; // ESSE BEAN SERVE PARA FALAR PARA O SPRING QUE ESSA INTERFACE DEVE INTERAGIR POIS COMO ELA ESTA EM UMA CAMADA MAIS PROFUNDA O SPRING NÃO IRIA RECONHECELO
 
 }
