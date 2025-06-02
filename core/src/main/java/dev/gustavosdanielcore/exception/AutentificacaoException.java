@@ -9,4 +9,8 @@ public class AutentificacaoException extends Exception{
         this.codego = codego;
 
     }
+
+    public String getCodego() {
+        return codego;
+    }
 }

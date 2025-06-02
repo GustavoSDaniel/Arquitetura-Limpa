@@ -4,8 +4,8 @@ package dev.gustavosdaniel.infrastructure.dto.response;
 import java.util.List;
 
 public record ErrorResponse(
-        String codego,
         String mensagem,
+        String codego,
         List<ErroValidado> erroValidadoList
         ) {
 

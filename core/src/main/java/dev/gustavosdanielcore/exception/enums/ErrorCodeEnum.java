@@ -15,7 +15,8 @@ public enum ErrorCodeEnum {
     TRAN0002("Transferencia não autorizada", "TRAN-0002"),
     ATHN0002("Houve um erro de autentificalçao", "ATH-0002"),
     PIN0001("Pin de transação bloqueado", "PIN-0001"),
-    PIN0002("Pin incorreto, %d tentativa(s) restante(s)", "PIN-0002"); //O "%d" vai ser subistituido pelo "quantidadeDeTentativas"
+    PIN0002("Pin incorreto, %d tentativa(s) restante(s)", "PIN-0002"), //O "%d" vai ser subistituido pelo "quantidadeDeTentativas"
+    NO0002("Invalid request", "NO-0002");
 
 
 

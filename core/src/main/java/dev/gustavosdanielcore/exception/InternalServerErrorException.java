@@ -9,4 +9,9 @@ public class InternalServerErrorException extends Exception{
         this.codego = codego;
 
     }
+
+    public String getCodego() {
+        return codego;
+    }
 }
+

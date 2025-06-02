@@ -9,4 +9,8 @@ public class PinException extends Exception{
         this.codego = codego;
 
     }
+
+    public String getCodego() {
+        return codego;
+    }
 }

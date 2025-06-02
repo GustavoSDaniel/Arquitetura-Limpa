@@ -9,4 +9,8 @@ public class TransicaoPinException extends Exception {
         super(mensagem);
         this.codego = codego;
     }
+
+    public String getCodego() {
+        return codego;
+    }
 }
