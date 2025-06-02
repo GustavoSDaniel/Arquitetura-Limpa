@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ValidarTransacaoGatewayImpl implements ValidarTransacaoGateway {
 
-    private ValidarApiClient validarApiClient;
+    private final ValidarApiClient validarApiClient;
 
     public ValidarTransacaoGatewayImpl(ValidarApiClient validarApiClient) {
         this.validarApiClient = validarApiClient;

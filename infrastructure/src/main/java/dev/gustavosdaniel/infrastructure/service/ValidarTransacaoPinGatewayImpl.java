@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 public class ValidarTransacaoPinGatewayImpl implements ValidarTransacaoPinGateway {
     // AS INGREÇÕES DE DEPENDENCIA SÃO DO MAPPER E DO REPOSITORRY
 
-    private TransacaoPinEntityRepository transacaoPinEntityRepository;
-    private AtualizarTransicaoPinUseCase atualizarTransicaoPinUseCase;
+    private final TransacaoPinEntityRepository transacaoPinEntityRepository;
+    private final AtualizarTransicaoPinUseCase atualizarTransicaoPinUseCase;
 
     public ValidarTransacaoPinGatewayImpl(TransacaoPinEntityRepository transacaoPinEntityRepository, TransicaoPinMapper transicaoPinMapper, AtualizarTransicaoPinUseCase atualizarTransicaoPinUseCase) {
         this.transacaoPinEntityRepository = transacaoPinEntityRepository;

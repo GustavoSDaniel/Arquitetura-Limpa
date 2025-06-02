@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class CriarTransicaoGatewayImpl implements CriarTransicaoGateway {
 
-    private TransacaoEntityRepository transacaoEntityRepository;
-    private TransacaoMapper transacaoMapper;
+    private final TransacaoEntityRepository transacaoEntityRepository;
+    private final TransacaoMapper transacaoMapper;
 
     public CriarTransicaoGatewayImpl(TransacaoEntityRepository transacaoEntityRepository, TransacaoMapper transacaoMapper) {
         this.transacaoEntityRepository = transacaoEntityRepository;

@@ -9,7 +9,7 @@ import static dev.gustavosdaniel.infrastructure.utils.Utilites.log;
 
 @Service
 public class AvaliarEmailUseCaseGatewayImpl implements AvaliarEmailUseCaseGateway {
-    private UsuarioEntityRepository usuarioEntityRepository;
+    private final UsuarioEntityRepository usuarioEntityRepository;
     // AS INGREÇÕES DE DEPENDENCIA SÃO DO MAPPER E DO REPOSITORRY
 
     public AvaliarEmailUseCaseGatewayImpl(UsuarioEntityRepository usuarioEntityRepository) {

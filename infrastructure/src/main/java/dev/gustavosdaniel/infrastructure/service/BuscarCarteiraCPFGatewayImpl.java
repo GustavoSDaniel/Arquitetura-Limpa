@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class BuscarCarteiraCPFGatewayImpl implements BuscarCarteiraCPFGateway {
 
-    private CarteiraEntityRepository carteiraEntityRepository;
-    private CarteiraMapper carteiraMapper;
+    private final CarteiraEntityRepository carteiraEntityRepository;
+    private final CarteiraMapper carteiraMapper;
     // AS INGREÇÕES DE DEPENDENCIA SÃO DO MAPPER E DO REPOSITORRY
 
 

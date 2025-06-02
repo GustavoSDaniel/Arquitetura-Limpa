@@ -19,12 +19,12 @@ import static dev.gustavosdaniel.infrastructure.utils.Utilites.log;
 @Service
 public class CriarUsuarioGatewayImpl implements CriarUsuarioGateway {
 
-    private UsuarioEntityRepository usuarioEntityRepository;
-    private UsuarioMapper usuarioMapper;
-    private TransacaoPinEntityRepository transacaoPinEntityRepository;
-    private TransicaoPinMapper transicaoPinMapper;
-    private CarteiraEntityRepository carteiraEntityRepository;
-    private CarteiraMapper carteiraMapper;
+    private final UsuarioEntityRepository usuarioEntityRepository;
+    private final UsuarioMapper usuarioMapper;
+    private final TransacaoPinEntityRepository transacaoPinEntityRepository;
+    private final TransicaoPinMapper transicaoPinMapper;
+    private final CarteiraEntityRepository carteiraEntityRepository;
+    private final CarteiraMapper carteiraMapper;
     // AS INGREÇÕES DE DEPENDENCIA SÃO DO MAPPER E DO REPOSITORRY
 
 

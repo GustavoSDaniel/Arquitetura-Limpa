@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class TransferirGatewayImpl implements TransferirGateway {
 
-    private CarteiraEntityRepository carteiraRepository;
-    private TransacaoEntityRepository transacaoEntityRepository;
-    private CarteiraMapper carteiraMapper;
-    private TransacaoMapper transacaoMapper;
+    private final CarteiraEntityRepository carteiraRepository;
+    private final TransacaoEntityRepository transacaoEntityRepository;
+    private final CarteiraMapper carteiraMapper;
+    private final TransacaoMapper transacaoMapper;
 
     public TransferirGatewayImpl(CarteiraEntityRepository carteiraRepository, TransacaoEntityRepository transacaoEntityRepository, CarteiraMapper carteiraMapper, TransacaoMapper transacaoMapper) {
         this.carteiraRepository = carteiraRepository;

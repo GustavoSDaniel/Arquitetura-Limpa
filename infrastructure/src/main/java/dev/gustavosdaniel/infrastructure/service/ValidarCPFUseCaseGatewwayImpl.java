@@ -9,7 +9,7 @@ import static dev.gustavosdaniel.infrastructure.utils.Utilites.log;
 
 @Service
 public class ValidarCPFUseCaseGatewwayImpl implements ValidarCPFUseCaseGatewway {
-    private UsuarioEntityRepository usuarioEntityRepository;
+    private final UsuarioEntityRepository usuarioEntityRepository;
     // AS INGREÇÕES DE DEPENDENCIA SÃO DO MAPPER E DO REPOSITORRY
 
     public ValidarCPFUseCaseGatewwayImpl(UsuarioEntityRepository usuarioEntityRepository) {

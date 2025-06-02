@@ -2,15 +2,17 @@ package dev.gustavosdaniel.infrastructure.dto.request;
 
 
 import dev.gustavosdanielcore.domain.enums.TipoUsuarioEnum;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record CreateUsuarioRequest (
 
-        String email,
-        String senha,
-        String numeroCPF,
-        String nomeCompleto,
-        TipoUsuarioEnum tipoUsuarioEnum,
-        String pin
+        @NotBlank String email,
+        @NotBlank String senha,
+        @NotBlank String numeroCPF,
+        @NotBlank String nomeCompleto,
+        @NotNull TipoUsuarioEnum tipoUsuarioEnum,
+        @NotBlank String pin
 ){
 
 }
