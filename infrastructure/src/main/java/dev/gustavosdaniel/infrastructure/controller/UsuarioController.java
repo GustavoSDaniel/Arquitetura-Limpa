@@ -6,10 +6,11 @@ import dev.gustavosdaniel.infrastructure.mapper.UsuarioMapper;
 import dev.gustavosdaniel.usecase.AvaliarEmailUseCase;
 import dev.gustavosdaniel.usecase.CriarUsuarioUseCase;
 import dev.gustavosdaniel.usecase.ValidarCPFUseCase;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import static dev.gustavosdaniel.infrastructure.utils.Utilites.log;
 //DESSA FORMA EU CONSIGO CHAMAR O METODO DIRETO SEM PRECISAR CHAMAR O NOME DA CLASSE
 
@@ -30,14 +31,15 @@ public class UsuarioController {
     }
 
     @PostMapping("/createUsuario")
-    public BaseResponse<String> criarUsuario(@RequestBody CreateUsuarioRequest request) throws Exception {
+    @ResponseStatus(HttpStatus.CREATED) //PARA DAR UMA RESPOSTA DE 201 CREATED
+    public ResponseEntity<BaseResponse<String>> criarUsuario(@Valid @RequestBody CreateUsuarioRequest request) throws Exception {
         log.info("Inicio da criação do usuario:: UsuarioController");
         avaliarEmailUseCase.emailValidado(request.email());
         validarCPFUseCase.validarCPF(request.numeroCPF());
         criarUsuarioUseCase.criar(usuarioMapper.paraUsuario(request), request.pin());
         log.info("Usuario criado com sucesso: UsuarioController");
 
-        return BaseResponse.<String>builder().success(true).mensagem("Usuario criado com sucesso").build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse.<String>builder().success(true).mensagem("Usuario criado com sucesso").build());
     }
 
 }
