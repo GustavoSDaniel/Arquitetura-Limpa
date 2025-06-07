@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CarteiraConfig {
 
+    //conectando as implementações concretas com suas respectivas interfaces e gateways (portas de entrada para infraestrutura/externos)
+
     @Bean
     public BuscarCarteiraCPFUseCase buscarCarteiraCPFUseCase(BuscarCarteiraCPFGateway buscarCarteiraCPFGateway) {
         return new BuscarCarteiraCPFUseCaseImpl( buscarCarteiraCPFGateway);
